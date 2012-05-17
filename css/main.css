@@ -17,6 +17,27 @@
 }
 
 
+@font-face {
+font-family:"myriad-pro-bold-condensed";
+src:url('../assets/fonts/myriad-pro/MYRIADPRO-BOLDCOND.ttf')format('truetype');
+font-style:normal;
+font-weight:normal;
+}
+
+@font-face {
+font-family:"myriad-pro-condensed";
+src:url('../assets/fonts/myriad-pro/MYRIADPRO-COND.ttf')format('truetype');
+font-style:normal;
+font-weight:normal;
+}
+@font-face {
+font-family:"myriad-pro";
+src:url('../assets/fonts/myriad-pro/MYRIADPRO-REGULAR.ttf') format('truetype');
+font-style:normal;
+font-weight:normal;
+}
+
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -27,11 +48,12 @@ html, body {
 	margin: 0;
 	overflow: hidden;
 	
-	font-family: 'Lato', Times, 'Times New Roman', serif;
-	font-size: 36px;
+	font-family:  'myriad-pro', 'myriad-pro-condensed', 'MyriadPro', serif;
+
+	font-size: 30px;
 	font-weight: 200;
-	letter-spacing: -0.02em;
-	
+	letter-spacing: -0.04em;
+	/*color: #5DE048;*/
 	color: #eee;
 	
 	width: 100%;
@@ -42,13 +64,16 @@ html, body {
 
 html {
 	background: #1c1e20;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM1NTVhNWYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWMxZTIwIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-radial-gradient(center, ellipse cover,  rgba(85,90,95,1) 0%, rgba(28,30,32,1) 100%);
+	background: url();
+	background-image: url("imgs/dup3.png");
+	/*background-image: url("imgs/lightblue_jpg.jpg");*/
+	/*background: -moz-radial-gradient(center, ellipse cover,  rgba(85,90,95,1) 0%, rgba(28,30,32,1) 100%);
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(85,90,95,1)), color-stop(100%,rgba(28,30,32,1)));
 	background: -webkit-radial-gradient(center, ellipse cover,  rgba(85,90,95,1) 0%,rgba(28,30,32,1) 100%);
 	background: -o-radial-gradient(center, ellipse cover,  rgba(85,90,95,1) 0%,rgba(28,30,32,1) 100%);
 	background: -ms-radial-gradient(center, ellipse cover,  rgba(85,90,95,1) 0%,rgba(28,30,32,1) 100%);
 	background: radial-gradient(center, ellipse cover,  rgba(85,90,95,1) 0%,rgba(28,30,32,1) 100%);
+	*/
 }
 
 /*********************************************
@@ -58,22 +83,30 @@ html {
 #reveal h2, 
 #reveal h3, 
 #reveal h4 {
+
+		
 	margin: 0 0 20px 0;
 	
-	color: #eee;
-	
-	font-family: 'League Gothic', sans-serif;
+	font-family: 'myriad-pro-bold-condensed', 'MyriadPro-Cond', serif;
+
 	line-height: 0.9em;
 	letter-spacing: 0.02em;
 	
-	text-transform: uppercase;
+	text-transform: capitalize;
 	text-shadow: 0px 0px 6px rgba(0,0,0,0.2);
 }
 
-#reveal h1 { font-size: 136px; 	}
-#reveal h2 { font-size: 76px;	}
+#reveal h1 { font-size: 60px; 	
+			color: #FAFA50;;
+		}
+#reveal h2 { font-size: 60px;	
+			color: #FAFA50;;
+			}
 #reveal h3 { font-size: 56px;	}
-#reveal h4 { font-size: 36px;	}
+#reveal h4 { font-size: 26px;	
+			font-family: 'myriad-pro',serif;
+			margin: 0 0 15px 0;
+			}
 
 #reveal h1.inverted,
 #reveal h2.inverted,
@@ -83,19 +116,6 @@ html {
 	text-shadow: 0px 0px 2px rgba(0,0,0,0.2);
 }
 
-#reveal h1 {
-	text-shadow: 0 1px 0 #ccc,
-                 0 2px 0 #c9c9c9,
-                 0 3px 0 #bbb,
-                 0 4px 0 #b9b9b9,
-                 0 5px 0 #aaa,
-                 0 6px 1px rgba(0,0,0,.1),
-                 0 0 5px rgba(0,0,0,.1),
-                 0 1px 3px rgba(0,0,0,.3),
-                 0 3px 5px rgba(0,0,0,.2),
-                 0 5px 10px rgba(0,0,0,.25),
-                 0 20px 20px rgba(0,0,0,.15);
-}
 
 
 /*********************************************
@@ -166,7 +186,7 @@ html {
 }
 
 #reveal p {
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 #reveal blockquote {
@@ -235,7 +255,7 @@ html {
 }
 	
 	#reveal a:not(.image):hover {
-		color: hsl(185, 85%, 70%);
+		color: #FAFA00;
 		background: hsla(185, 25%, 20%, 0.4);
 		text-shadow: none;
 		border: none;
@@ -243,7 +263,7 @@ html {
 	}
 
 #reveal section img {
-	margin: 30px 0 0 0;
+	/*margin: 20px 0 0 0;*/
 	background: rgba(255,255,255,0.12);
 	border: 4px solid #eee;
 	
@@ -275,12 +295,12 @@ html {
 #reveal .controls {
 	display: none;
 	position: fixed;
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 60px;
 	z-index: 30;
 
 	right: 0;
-	bottom: 0;
+	bottom: 20px;
 }
 	
 	#reveal .controls a {
@@ -290,9 +310,8 @@ html {
 		color: #fff;
 	}
 		#reveal .controls a.enabled {
-			opacity: 0.6;
-			color: hsl(185, 85%, 70%);
-
+			opacity: 0.7;
+			color: #FAFA00;
 			text-shadow: 0px 0px 2px hsla(185, 45%, 70%, 0.3);
 		}
 		#reveal .controls a.enabled:active {
@@ -301,20 +320,22 @@ html {
 
 	#reveal .controls .left {
 		top: 30px;
+
 	}
 
 	#reveal .controls .right {
-		left: 60px;
+		left: 90px;
 		top: 30px;
 	}
 
 	#reveal .controls .up {
-		left: 30px;
+		left: 60px;
+		top: 30px;
 	}
 
 	#reveal .controls .down {
 		left: 30px;
-		top: 60px;
+		top: 30px;
 
 	}
 
@@ -326,7 +347,7 @@ html {
 #reveal .progress {
 	position: fixed;
 	display: none;
-	height: 3px;
+	height: 10px;
 	width: 100%;
 	bottom: 0;
 	left: 0;
@@ -336,7 +357,7 @@ html {
 	
 	#reveal .progress span {
 		display: block;
-		background: hsl(185, 85%, 50%);
+		background:  rgba(240,240,0,0.6);
 		height: 100%;
 		width: 0px;
 
@@ -432,8 +453,9 @@ html {
 #reveal .slides {
 	position: absolute;
 	width: 900px;
+	border-radius: 8px 8px 8px 8px;
 	height: 600px;
-	
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
 	left: 50%;
 	top: 50%;
 	margin-left: -450px;
