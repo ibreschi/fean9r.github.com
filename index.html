@@ -20,6 +20,62 @@
 
 		<link rel="stylesheet" href="lib/zenburn.css">
 
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+      function drawVisualization() {
+        // Create and populate the data table.
+
+        var dataSerial = google.visualization.arrayToDataTable([
+          ['x', 'Cube', 'Tetrahedron',    'BigGuy',    'MonsterFrog'],
+          ['1',   6/0.0,       4/0.0,      1450/9,        1292/7],
+          ['2',   24/0.0 ,     12/0.0,     5800/40,       5168/46 ],
+          ['3',   96/0,        48/0.0,     23200/237,     20672/194],
+          ['4',   384/1,       192/1,      92800/1017,    92800/1017],
+          ['5',   1536/9,      768/4,      371200/4310,   371200/4310],
+          ['6',   6144/43,     3072/25,    null,          null],
+          ['7',   24576/242,   12288/128,  null,          null],
+          ['8',   98304/1207,  49152/490,  null,          null],
+          ['9',   393216/5447, 196608/2502,null,          null]
+        ]);
+        var dataParal = google.visualization.arrayToDataTable([
+          ['x', 'Cube', 'Tetrahedron',    'BigGuy',    'MonsterFrog'],
+          ['1',   6/22,       4/19,      1450/42,        1292/30],
+          ['2',   24/19 ,     12/17,     5800/50,       5168/47 ],
+          ['3',   96/60,        48/18,     23200/94,     20672/69],
+          ['4',   384/52,       192/21,      92800/353,    92800/412],
+          ['5',   1536/63,      768/30,      371200/1203,   371200/1049],
+          ['6',   6144/71,     3072/39,    1484800/5062,          1303008/5462],
+          ['7',   24576/139,   12288/69,  null,          null],
+          ['8',   98304/384,  49152/218,  null,          null],
+          ['9',   393216/1017, 196608/1043,null,          null],
+          ['10',  1572864/6462,786432/3682,null,          null]
+        ]);
+
+        // Create and draw the visualization.
+        new google.visualization.LineChart(document.getElementById('visualization')).
+            draw(dataSerial, {curveType: "function",
+                        width: 600, height: 400,
+                        vAxis: {maxValue: 400,title: "Face-Rate/ms"},
+                        hAxis: {title: "Iterations"}	
+                    	}
+                );
+
+        new google.visualization.LineChart(document.getElementById('visualization2')).
+            draw(dataParal, {curveType: "function",
+                        width: 600, height: 400,
+                        vAxis: {maxValue: 400,title: "Face-Rate/ms"},
+                        hAxis: {title: "Iterations"}	
+                    	}
+                );
+      }
+      
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+
 		<script type="text/javascript" src="lib/glMatrix-0.9.5.min.js"></script>
 		<script type="text/javascript" src="lib/webgl-utils.js"></script>
 		
@@ -480,10 +536,10 @@
 					<section>
 						<h2>WebGLEsempio con canvas</h2>
 						<p>
-							se è possibile esemprio con canvas
+							trovare modo di stopparlo occupa molta cpu
 							<canvas id="canvasCC" width="600" height="600"></canvas>
 							<script type="text/javascript">
-								webGLStart("canvasCC");
+							// 	webGLStart("canvasCC");
 							</script>
 							
 						</p>
@@ -498,141 +554,91 @@
 					</p>
 				
 				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-				
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
 				<section>
 					<section data-state="alert">
-						<h2>Global State</h2>
+						<h2>The results!!</h2>
 						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This let's you
-							apply broader style changes, like switching the background.
+							Qui sono presentati i risultati grafici  
 						</p>
-						<a href="#/7/1" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
+						<p>
+							Tali grafici sono in numero di facce al secondo
+						</p>
+						<ul>
+							<li>CUBE</li>
+							<li>TETRAHEDRON</li>
+							<li>BIGGUY</li>
+							<li>MONSTERFROG</li>
+						</ul>
+					
 					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#/7/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						</a>
+					<section >
+						<h2>Serial Results</h2>
+						<p>
+							The face-rate of the serial implementations attemnts on 80.000 faces per second.
+						</p>
+						<div id="visualization" style="width: 600px; height: 400px;text-align: center;"></div>
+
 					</section>
 					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#/7/0" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<h2>Parallel Results !</h2>
+						<p>For a reasonable input, more than 10000 faces, the face-rate attemnts on 250.000 faces per second. 3 volte tanto !
+						</p>
+						<div id="visualization2" style="width: 600px; height: 400px;text-align: center;"></div>
 					</section>
 				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener( 'customevent', function() {
-	alert( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						The nice thing about standards is that there are so many to choose from</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						For years there has been a theory that millions of monkeys typing at random on millions of typewriters would 
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.
-					</blockquote>
-				</section>
-				
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code contenteditable>
-var supports3DTransforms =  document.body.style['webkitPerspective'] !== undefined || 
-				document.body.style['MozPerspective'] !== undefined ||
-				document.body.style['perspective'] !== undefined;
-
-function linkify( selector ) {
-    if( supports3DTransforms ) {
-        
-        var nodes = document.querySelectorAll( selector );
-
-        for( var i = 0, len = nodes.length; i < len; i++ ) {
-            var node = nodes[i];
-
-            if( !node.className || !node.className.match( /roll/g ) ) {
-                node.className += ' roll';
-                node.innerHTML = '<span data-title="'+ node.text +'">' + node.innerHTML + '</span>';
-            }
-        };
-    }
-}
-
-linkify( 'a' );
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+					<section>
+						<h2>Sviluppi futuri</h2>
+						<p>
+							Queste sono di due tipologie:
+						</p>
+						<h1>&nbsp</h1><h1>&nbsp</h1>
+						<ol>
+							<li>Migliorie al programma </li>
+							<li>Nuovi ambidi di sviluppo</li>
+						</ol>
+					</section>
+					<section data-state="alert">
+						<h2>Catmull-Clark side</h2>
+						<ul>
+							<li>Migliorare le performance dell'algoritmo parallelo</li>
+							<li>Test su altre piattaforme</li>
+							<li>Ricerca della implementazione migliore</li>
+							<li>Porting del codice seriale a Plasm.js</li>
+						</ul>
+					</section>
+					<section data-state="alert">
+						<h2>WebCL side</h2>
+						<p>
+							Nuovi ambiti dove applicare WebCL!
+						</p>
+						<ul>
+							<li>Collisioni di particelle.</li>
+							<li>Fluido dinamica in 2D e 3D.</li>
+							<li>Fisica nei videogiochi</li>
+							<li>Realtà aumentata</li>
+							<li> molto altro ...</li>
+						</ul>
+					</section>
 				</section>
 				
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,<br/>
-						<a href="#/2/3">like this</a>.
-					</p>
+				<section >
+					<h1>&nbsp</h1>
+					<h3>Grazie per la vostra attenzione!</h3>
+					<h1>&nbsp</h1><h1>&nbsp</h1>
+
+					<p> Il codice scritto durante la tesi:  https://github.com/fean9r</p>
+					<p> Il codice per i grafici : developers.google.com/chart/ </p>
+					<p> Lo scheletro delle slide CSS: reveal.js </p>
+
 				</section>
 
-				<section>
-					<h2>Fragmented Views</h2>
-					<p>Hit the next arrow...</p>
-					<p class="fragment">... to step through ...</p>
-					<ol>
-						<li class="fragment"><code>any type</code></li>
-						<li class="fragment"><em>of view</em></li>
-						<li class="fragment"><strong>fragments</strong></li>
-					</ol>
-				</section>
-				
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://hakim.se/experiments/html5/breakdom/" target="_blank">
-						<img width="320" height="412" src="https://s3.amazonaws.com/hakim-static/reveal-js/breakdom.png">
-					</a>
-				</section>
-				
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on github</a></li>
-						<li><a href="http://hakim.se/projects/reveal-js">Read more on my site</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-				
-				<section>
-					<h1>THE END</h1>
-					<h3 class="inverted">BY Hakim El Hattab / hakim.se</h3>
+
+				<section data-state="blackout">
+					<h1>&nbsp</h1>
+					<h1>&nbsp</h1>
+					<h1>&nbsp</h1>
+					<blockquote>fin</blockquote>
 				</section>
 			</div>
 
@@ -692,7 +698,7 @@ linkify( 'a' );
 				rollingLinks: true,
 
 				// UI style
-				theme: query.theme || 'neon', // default/neon
+				theme: query.theme || 'default', // default/neon
 
 				// Transition style
 				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
