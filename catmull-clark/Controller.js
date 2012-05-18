@@ -89,27 +89,21 @@ Controller.prototype.add_obj = function(file,nr_levels){
 
 Controller.prototype.InitModels= function(){
   var tStart = new Date().valueOf();
-  // console.log("Adding a Cube");
-  // this.add_obj("objs/cube.obj",10);
-  // console.log("Cube added");
+  console.log("Adding a Cube");
+  this.add_obj("objs/cube.obj",5);
+  console.log("Cube added");
 
-  // console.log("Adding a Tetrahedron");
-  // this.add_obj("objs/tetra.obj",10);
-  // console.log("Tetrahedron added");
+  console.log("Adding a Tetrahedron");
+  this.add_obj("objs/tetra.obj",5);
+  console.log("Tetrahedron added");
 
-  // console.log("Adding a Bigguy");
-  // this.add_obj("objs/bigguy.obj",6);
-  // console.log("Bigguy added");
+  console.log("Adding a Bigguy");
+  this.add_obj("objs/bigguy.obj",3);
+  console.log("Bigguy added");
   
   console.log("Adding a Monsterfrog");
-  this.add_obj("objs/monsterfrog.obj",4);
+  this.add_obj("objs/monsterfrog.obj",3);
   console.log("Monsterfrog added");
-
-  // // this.add_obj("base_head.obj",4);
-  ////  a teapot is impossible to draw couse it is not a correct mash
-  //// console.log("Adding a Teapot");
-  //// this.add_obj("objs/teapot.obj",3);
-  //// console.log("Cube Teapot");
   var tEnd = new Date().valueOf();
   console.log("total Time :",tEnd-tStart);
 
