@@ -51,7 +51,6 @@ Controller.prototype.InitController = function ()
     // start the CL subdivider engine
     this.subdivider= WebCLProgram();
     this.subdivider.InitWebCL();
-    this.SetMode(this.js_simMode);
   }
 
   // Load Objects
@@ -174,17 +173,6 @@ Controller.prototype.SetStats= function(){
   document.getElementById("nameModel").firstChild.nodeValue = model.file;
 }
 
-Controller.prototype.SetMode= function(isJs) {
-  var div = document.getElementById("sim");
-  if(isJs){
-    div.firstChild.nodeValue =  "JS";
-  }
-  else {
-    div.firstChild.nodeValue = (this.subdivider.cl === undefined)? "NA" : "CL";
-  }
-  var div = document.getElementById("drw");
-  div.firstChild.nodeValue = (this.gl === null)? "NA" : "GL";
-};
 
 Controller.prototype.ToggleSimRunning=function(){
   this.isSimRunning = !this.isSimRunning;
