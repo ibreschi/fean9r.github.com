@@ -25,9 +25,9 @@ $(document).ready(function(){
 			position:'absolute',
 			top: ($(window).height() - $('.leftControls').outerHeight())/2
 		});
-    	$('.rightControls').css({
+    	$('img').css({
       		position:'absolute',
-      		top: ($(window).height() - $('.rightControls').outerHeight())/2
+      		top: ($(window).height() - $('img').outerHeight())/2
     	});
 	});
 	$(window).resize();
@@ -106,8 +106,12 @@ $(document).ready(function(){
 <div class="className">
 <!-- canvas must be square since simulator works in normalized device coordinates -->
 	<canvas id="canvasCC" width="600" height="600"></canvas>
+</div>
+<a href="http://fean9r.github.com/#/5" class="image">
+		<img width="178" height="238" src="../css/imgs/arrow.png">
+</a>
+
 
 <script src="index.js"></script>
-</div>
 </body>
 </html>
