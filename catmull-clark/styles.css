@@ -17,23 +17,66 @@
   	-webkit-box-shadow: 0 0 10px #fff;
   	-moz-box-shadow: 0 0 10px #000;
   	-o-box-shadow: 0 0 10px #000;
+  		background-attachment: scroll;
+background-clip: border-box;
+background-color: 
+transparent;
+background-image: none;
+background-origin: padding-box;
+border-bottom-color: 
+#551A8B;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-left-color: 
+#551A8B;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: 
+#551A8B;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: 
+#551A8B;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-top-style: none;
+border-top-width: 0px;
+color: 
+#551A8B;
+cursor: auto;
+display: inline;
+font-family: myriad-pro, myriad-pro-condensed, MyriadPro, serif;
+font-size: 30px;
+font-weight: normal;
+height: auto;
+left: auto;
+letter-spacing: -1px;
+line-height: 36px;
+margin-bottom: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+min-height: 0px;
+overflow-x: visible;
+overflow-y: visible;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+position: static;
+text-align: center;
+text-decoration: underline;
+top: auto;
+vertical-align: baseline;
+width: auto;
 }
-
-.rightControls{
-	right:1px;
-	position : relative;
-	height: 200px;
-	width: 300px;
-  	-webkit-box-shadow: 0 0 10px #fff;
-  	-moz-box-shadow: 0 0 10px #000;
-  	-o-box-shadow: 0 0 10px #000;
-}
-
 .info {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	font-size:16px;
-	color: white;
+	color: black;
 }
 .btn {
 	font-family: Arial, Helvetica, sans-serif;
