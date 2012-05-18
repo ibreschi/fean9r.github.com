@@ -45,7 +45,6 @@ Controller.prototype.InitController = function ()
   // start the JS subdivider engine
   if (this.js_simMode){
     this.subdivider= new Subdivider();
-    this.SetMode(this.js_simMode);
   }
   else {
     // start the CL subdivider engine
