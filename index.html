@@ -95,11 +95,9 @@
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
 
-    varying vec4 vColor;
-
     void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-        vColor = aVertexColor;
+        gl_PointSize  =2.0;
     }
 </script>
 
@@ -535,7 +533,7 @@
                             <ul>
                                 <li>First you write a Kernel</li>
                                 <li>Then you Define an N-Dimensional comutation domain</li>
-                                <li>and WebGL executes your kernel for each point of this domain</li>
+                                <li>and OpenCL executes your kernel for each point of this domain</li>
                             </ul>    
                             </li>
                             <li>More?</li>
@@ -598,6 +596,9 @@
                             </ul>    
                         </li>
                     </ul>
+                    spiegare bene che cosa è una superfice di suddivisione
+                    parlare delle iterazioni
+                    la seguente è una iterazione.
                     <div id="logo" style="">
                         <img width="300" height="300"src="css/imgs/fase02D.png">
                     </div>
