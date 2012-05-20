@@ -102,11 +102,12 @@ html {
 	text-shadow: 0px 0px 6px rgba(0,0,0,0.2);
 }
 
-#reveal h1 { font-size: 66px; 	
+#reveal h1 { font-size: 55px; 	
 			color: #FAFA50;;
 		}
 #reveal h2 { font-size: 60px;	
-			color: #FAFA50;;
+			color: #FAFA50;
+			margin-top:20px;
 			}
 #reveal h3 { font-size: 56px;	}
 #reveal h4 { font-size: 26px;	
@@ -164,20 +165,23 @@ html {
 #reveal ol, 
 #reveal ul {
 	display: inline-block;
-
+	line-height: 1.65em;
 	text-align: left;
 	margin: 0 auto;
 }
 
 #reveal ol {
 	list-style: decimal inside;
+	font-size: 45px;
+	line-height: 45px;
 }
 
 #reveal ul {
 	list-style: disc;
 }
 	#reveal ul>li>ul {
-		list-style: square;
+		list-style: none;
+		line-height: 1.2em;
 	}
 		#reveal ul>li>ul>li>ul {
 			list-style: circle;
@@ -188,7 +192,7 @@ html {
 #reveal ul>li>ul>li>ul,
 #reveal ol>li>ol>li>ol {
 	display: block;
-	margin-left: 40px;
+	margin-left: 20px;
 }
 
 #reveal p {
@@ -261,6 +265,7 @@ html {
 
 #reveal section img {
 	/*margin: 20px 0 0 0;*/
+	margin-top: 5px;
 	background: rgba(255,255,255,0.12);
 	border: 4px solid #eee;
 	
@@ -450,9 +455,8 @@ html {
 #reveal .slides {
 	position: absolute;
 	width: 900px;
-	border-radius: 8px 8px 8px 8px;
+	
 	height: 600px;
-	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
 	left: 50%;
 	top: 50%;
 	margin-left: -450px;
@@ -478,12 +482,20 @@ html {
  	        perspective-origin: 50% 25%;
 }
 
+#reveal .slides>section{
+	border-radius: 8px 8px 8px 8px;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+
+}
+
+
 #reveal .slides>section,
 #reveal .slides>section>section {
 	display: none;
 	position: absolute;
 	width: 100%;
 	min-height: 600px;
+
 
     z-index: 10;
 	
@@ -503,6 +515,7 @@ html {
 	display: block;
 	z-index: 11;
 	opacity: 1;
+
 }
 
 
