@@ -10,7 +10,6 @@ exports.WebGlDrawer = function (){
 	this.view= null;
 	this.camera= null;
 	this.program= null;
-	this.cube = null;
   this.app=null;
   this.poin=null;
 	this.xRot = 0; 
@@ -32,35 +31,6 @@ WebGlDrawer.prototype.init = function (canvasName,controller){
 
   this.focusCamera();
   //Create object
-  var xCube= this.xCube;
-  this.cube = new PhiloGL.O3D.Model({
-    program:'program1',
-    vertices: [ 
-      -xCube, -xCube, -xCube,   // 0
-      -xCube,  xCube, -xCube,   // 1
-      xCube,  xCube, -xCube,   // 2
-      xCube, -xCube, -xCube,   // 3
-      -xCube, -xCube,  xCube,   // 4 frontface
-      -xCube,  xCube,  xCube,   // 5
-      xCube,  xCube,  xCube,   // 6
-      xCube, -xCube,  xCube,   // 7
-      ],
-
-    indices:  [
-      0, 1,              // backface
-      1, 2,
-      2, 3,
-      3, 0,
-      4, 5,              // frontface
-      5, 6,
-      6, 7,
-      7, 4,
-      0, 4,              // back to front
-      1, 5,
-      2, 6,
-      3, 7]
-  });
-
   var model = this.controller.currentModel();
   var punti = model.meshes[model.cur_level].vertexbuf;
   var norm = model.meshes[model.cur_level].normalbuf;
@@ -134,32 +104,19 @@ WebGlDrawer.prototype.init = function (canvasName,controller){
     that.program = app.program;
     that.camera = app.camera;
     that.view = new PhiloGL.Mat4;
-    cube = that.cube;
     gl.enable(gl.BLEND);
     //gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
     gl.viewport(10, 10, canvas.width, canvas.height);
-    gl.clearColor(1,1 , 1, 0);
+    gl.clearColor(1,1 , 1, 1);
     gl.clearDepth(1);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
-      
     that.camera.view.id();
 
-    that.program.program1.setBuffers({
-      'aVertexPositionz': {
-        value: cube.vertices,
-        size: 3
-      },
-      'indices': {
-        value: cube.indices,
-        bufferType: gl.ELEMENT_ARRAY_BUFFER,
-        size: 1
-      }
-    });
 
     poin=that.poin;
    // set buffer with point data
-    that.program.program2.setBuffers({
+    that.program.setBuffers({
       'position': {
         value:   poin.vertices,
         size: 3
@@ -173,19 +130,11 @@ WebGlDrawer.prototype.init = function (canvasName,controller){
   }
 
   PhiloGL(this.canvasName,{
-    program: [{
-      id:'program1',
-        from: 'ids',
-        vs: 'cube-vshader',
-        fs: 'cube-fshader',
-      },
-      {
-      id: 'program2',
+    program: {
         from: 'ids',
         vs: 'point-vshader',
-        fs: 'point-fshader',
-      }
-    ],
+        fs: 'point-fshader'
+    },
     events: {
       onDragMove: dragMove,
       onKeyDown: keyPressFun,
@@ -256,14 +205,13 @@ WebGlDrawer.prototype.focusCamera = function(){
 WebGlDrawer.prototype.changeMesh= function(){
   var model = this.controller.currentModel();
   var punti = model.meshes[model.cur_level].vertexbuf;
-  // console.log(model.meshes[model.cur_level].indexbuf.length);
   var ind =  model.meshes[model.cur_level].indexbuf;
   var poin = this.poin;
   var gl= this.gl;
   poin.vertices=punti;
   poin.indices=ind;
   // set buffer with point data
-  this.program.program2.setBuffers({
+  this.program.setBuffers({
     'position': {
       value:   poin.vertices,
       size: 3
@@ -275,25 +223,6 @@ WebGlDrawer.prototype.changeMesh= function(){
       }
   });
   this.focusCamera();
-  var cube= this.cube;
-  var xCube=this.xCube;
-  cube.vertices= [ 
-      -xCube, -xCube, -xCube,   // 0
-      -xCube,  xCube, -xCube,   // 1
-      xCube,  xCube, -xCube,   // 2
-      xCube, -xCube, -xCube,   // 3
-      -xCube, -xCube,  xCube,   // 4 frontface
-      -xCube,  xCube,  xCube,   // 5
-      xCube,  xCube,  xCube,   // 6
-      xCube, -xCube,  xCube,   // 7
-      ];
-  this.program.program1.setBuffers({
-    'aVertexPositionz': {
-      value:   cube.vertices,
-      size: 3
-    }
-  });
-
 }
 
 
@@ -306,26 +235,8 @@ WebGlDrawer.prototype.drawScene = function (){
   var camera = this.camera;
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-	// //draw Cube
-  if(this.controller.is3D) {
-    gl.useProgram(program.program1.program);
-    cube.position.set(0, 0, this.z);
-    cube.rotation.set(this.xRot, this.yRot, 0);
-    //update element matrix
-    cube.update();
-    //get new view matrix out of element and camera matrices
-    view.mulMat42(camera.view, cube.matrix);
-    //set attributes, indices and textures
-    program.program1.setBuffer('aVertexPositionz').setBuffer('indices');
-    // set uniforms
-    program.program1.setUniform('uMVMatrix', view)
-           .setUniform('uPMatrix', camera.projection);
-    // draw lines
-    gl.drawElements(gl.LINES, cube.indices.length, gl.UNSIGNED_SHORT, 0);
-
-   }
   
-  gl.useProgram(program.program2.program);
+  gl.useProgram(program);
   poin.position.set(0, 0, this.z);
   poin.rotation.set(this.xRot, this.yRot, 0);
   //update element matrix
@@ -334,10 +245,10 @@ WebGlDrawer.prototype.drawScene = function (){
   view.mulMat42(camera.view, poin.matrix);
   //set attributes, indices and textures
   //set uniforms
-  program.program2.setUniform('uMVMatrix', view)
+  program.setUniform('uMVMatrix', view)
            .setUniform('uPMatrix', camera.projection);
 
-  program.program2.setBuffer('position').setBuffer('ind');
+  program.setBuffer('position').setBuffer('ind');
   
   gl.drawArrays(gl.POINTS, 0, this.poin.vertices.length/3); 
   //gl.drawElements(gl.TRIANGLES,  this.poin.indices.length, gl.UNSIGNED_SHORT,0); 
@@ -357,26 +268,7 @@ WebGlDrawer.prototype.drawSceneWire = function (){
   var camera = this.camera;
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-  // //draw Cube
-  if(this.controller.is3D) {
-    gl.useProgram(program.program1.program);
-    cube.position.set(0, 0, this.z);
-    cube.rotation.set(this.xRot, this.yRot, 0);
-    //update element matrix
-    cube.update();
-    //get new view matrix out of element and camera matrices
-    view.mulMat42(camera.view, cube.matrix);
-    // //set attributes, indices and textures
-    program.program1.setBuffer('aVertexPositionz').setBuffer('indices');
-    // //set uniforms
-    program.program1.setUniform('uMVMatrix', view)
-           .setUniform('uPMatrix', camera.projection);
-    // //draw triangles
-    gl.drawElements(gl.LINES, cube.indices.length, gl.UNSIGNED_SHORT, 0);
 
-   }
-  
-  gl.useProgram(program.program2.program);
   poin.position.set(0, 0, this.z);
   poin.rotation.set(this.xRot, this.yRot, 0);
   //update element matrix
@@ -385,11 +277,11 @@ WebGlDrawer.prototype.drawSceneWire = function (){
   view.mulMat42(camera.view, poin.matrix);
   //set attributes, indices and textures
   //set uniforms
-  program.program2.setUniform('uMVMatrix', view)
+  program.setUniform('uMVMatrix', view)
            .setUniform('uPMatrix', camera.projection);
 
-  program.program2.setBuffer('position').setBuffer('ind');
-  
+  program.setBuffer('position').setBuffer('ind');
+  console.log(this.poin.indices);
   //gl.drawArrays(gl.POINTS, 0, this.poin.vertices.length/3); 
   //gl.drawElements(gl.TRIANGLES,  this.poin.indices.length, gl.UNSIGNED_SHORT,0); 
   gl.drawElements(gl.LINES,  this.poin.indices.length, gl.UNSIGNED_SHORT,0); 

@@ -19,7 +19,7 @@ Mesh.prototype.destroy =function(){
   this.normalbuf=null;
   this.faces=null;
   this.indexbuf=null;
-  this= null;
+  // this= null;
 }
 
 Mesh.prototype.countVertex = function(){

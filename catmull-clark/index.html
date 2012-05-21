@@ -33,23 +33,6 @@ $(document).ready(function(){
 	$(window).resize();
 });
 </script>
-
-<script id="cube-vshader" type="x-shader/x-vertex">
-	attribute vec3 aVertexPositionz;
-  	uniform mat4 uMVMatrix;
-  	uniform mat4 uPMatrix;
-
-  	void main(void) {
-    	gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPositionz, 1.0);
-  	}
-</script>
-<script id="cube-fshader" type="x-shader/x-fragment">
-	precision mediump float;
-	void main() {
-		gl_FragColor = vec4(1, 1, 1, 1);
-	}
-</script>
-
 <script id="point-vshader" type="x-shader/x-vertex">
 	attribute vec3 position;
   	uniform mat4 uMVMatrix;
@@ -57,7 +40,7 @@ $(document).ready(function(){
 
   	void main(void) {
     	gl_Position = uPMatrix * uMVMatrix * vec4(position, 1.0);
-    	gl_PointSize  =2.0;
+    	gl_PointSize  =3.0;
   	}
 </script>
 <script id="point-fshader" type="x-shader/x-fragment">

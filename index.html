@@ -94,10 +94,12 @@
 
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
-
+    varying vec4 vColor;
+    
     void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-        gl_PointSize  =2.0;
+        vColor = aVertexColor;
+        
     }
 </script>
 
@@ -579,7 +581,7 @@
 						<h2>WebGL Example</h2>
 							<canvas id="canvasCC" width="480" height="480"></canvas>
 							<script type="text/javascript">
-							 //webGLStart("canvasCC");
+							 webGLStart("canvasCC");
 							</script>
 							
 					</section>
