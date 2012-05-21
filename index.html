@@ -95,7 +95,7 @@
     uniform mat4 uMVMatrix;
     uniform mat4 uPMatrix;
     varying vec4 vColor;
-    
+
     void main(void) {
         gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
         vColor = aVertexColor;
@@ -591,35 +591,53 @@
                     <section>
 					<h2>Study case : Catmull-Clark</h2>
                     <ul>
-                        <li>Subdivision Surfaces.</li>
-                        <li>Calculation three type of points.
+                        <li>Subdivision Surfaces: 
+                            <ul>
+                                <li>From the firsts control points you obtain new ones</li>
+                            </ul>
+                        </li>
+                        <li>Recoursive iterations.</li>
+                        <li>Calculation of three type of points.
                             <ul>
                                 <li>Face Points, Edge Points and Vertex Points.</li>
                             </ul>    
                         </li>
                     </ul>
-                    spiegare bene che cosa è una superfice di suddivisione
-                    parlare delle iterazioni
-                    la seguente è una iterazione.
+                   
                     <div id="logo" style="">
-                        <img width="300" height="300"src="css/imgs/fase02D.png">
+                        <img width="250" height="250"src="css/imgs/fase02D.png">
                     </div>
                     </section>
                     <section>
                         <h2>Face Points </h2>
                          <img  width="300" height="300" src="css/imgs/fase12D.png">
+                         <p> For each face of the control mesh, generate a new face point - which is positioned at the centroid of the vertices corresponding to a face.</p>
                     </section>
                     <section>
                         <h2>Edge Points </h2>
                          <img   width="300" height="300" src="css/imgs/fase22D.png">
+                         <p> Generate a new edge point for every edge as the centroid of four vertices: the two vertices that connect to make up the edge, and the face points for the two adjoining faces.</p>
                     </section>
                     <section>
                         <h2>Vertex Points </h2>
                          <img  width="300" height="300" src="css/imgs/fase32D.png">
+                         <p> For each original vertex, move it in relation of the FacePoints of the  adjoining faces and in relation of the neighboring vertices.</p>
                     </section>
                     <section>
                         <h2>Putting it all together </h2>
                         <img  width="300" height="300" src="css/imgs/fase42D.png">
+                        <ul>
+                        <li>Each new face point is connected to the new edge points 
+                            <ul>
+                                <li>edges defining the original face.</li>
+                            </ul>   
+                        </li>
+                        <li>Each new vertex point is connected to the new edge points
+                            <ul>
+                                <li> for all original edges incident on the original vertex point</li>
+                            </ul>   
+                        </li>
+                        </ul>
                     </section>
 				</section>
 				<section>
@@ -670,6 +688,7 @@
 					</section>
 					<section>
 						<h2>Catmull-Clark side</h2>
+                        <h1>&nbsp</h1>
 						<ul>
 							<li>Improve the performance of the algorithms</li>
 							<li>Test them on different platforms</li>
@@ -679,6 +698,7 @@
 					</section>
 					<section>
 						<h2>WebCL side</h2>
+                        <h1>&nbsp</h1>
                         
                         <ul>
                             <li>Find the best WebCL prototype.
