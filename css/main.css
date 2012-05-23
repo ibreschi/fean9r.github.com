@@ -8,21 +8,6 @@
 /*********************************************
  * FONT-FACE DEFINITIONS
  *********************************************/
-
-@font-face {
-	font-family: 'League Gothic';
-	src: url('../assets/fonts/leaguegothic/league_gothic-webfont.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-
-@font-face {
-font-family:"caflisch-script-pro";
-src:url('../assets/fonts/caflischscriptpro-regular.ttf')format('truetype');
-font-style:normal;
-font-weight:700;
-}
 @font-face {
 font-family:"myriad-pro-bold-condensed";
 src:url('../assets/fonts/myriad-pro/MYRIADPRO-BOLDCOND.ttf')format('truetype');
@@ -199,7 +184,6 @@ html {
 #reveal blockquote {
 	margin: 5px auto;
 
-	font-family: 'caflisch-script-pro', 'myriad-pro', sans-serif;
 	letter-spacing: 10px;
     font-size: 90px;
     line-height: 1.2em;
