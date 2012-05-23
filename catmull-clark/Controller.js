@@ -100,7 +100,7 @@ Controller.prototype.InitModels= function(){
   console.log("Bigguy added");
   
   console.log("Adding a Monsterfrog");
-  this.add_obj("objs/monsterfrog.obj",3);
+  this.add_obj("objs/frog.obj",3);
   console.log("Monsterfrog added");
   var tEnd = new Date().valueOf();
   console.log("total Time :",tEnd-tStart);
