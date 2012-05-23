@@ -451,7 +451,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<img width="145" height="80" src="css/imgs/Logo_Roma_Tre.jpg">
+					<img  src="css/imgs/Logo_Roma_Tre.jpg">
 					<p>	Dipartimento di Ingegneria Informatica</p>
 					<p>	Tesi di laurea</p>
 					<h1>Parallel implementation of the </h1>
@@ -501,7 +501,7 @@
 				<section>
 					<h2>HTML5 (r)evolution</h2>
                     <div id="logo" style="">
-                        <img width="82" height="115" src="css/imgs/html5.png">
+                        <img src="css/imgs/html5.png">
                     </div>
                        <ul>
                             <li>Cross-platform programming platform</li> 
@@ -512,7 +512,6 @@
                                     <li>- Not a closed app store – no app store ‘tax’</li>
                                 </ul>    
                             </li>
-                            <li>More</li> 
                         </ul>
 				</section>
 				
@@ -522,40 +521,32 @@
 					<section>
 						<h2>GPGPU computing through</h2>
                         <div id="logo" style="">
-                            <img width="115" height="114" src="css/imgs/opencl.png">
+                            <img  src="css/imgs/opencl.png">
                         </div>
-                        <ul>
-                            <li>What is it ? 
-                            <ul>
-                                <li>Framework for  Heterogeneous Parallel Computing on</li>
-                                <li>GPUs, CPUs, DSPs, embedded systems, mobile phones.</li>
-                            </ul>    
-                            </li>
-                            <li>How ?
-                            <ul>
-                                <li>First you write a Kernel</li>
-                                <li>Then you Define an N-Dimensional comutation domain</li>
-                                <li>and OpenCL executes your kernel for each point of this domain</li>
-                            </ul>    
-                            </li>
-                            <li>More?</li>
-                        </ul>
+                        <p>Framework for  Heterogeneous Parallel Computing on </p>
+                        <p>GPUs, CPUs, DSPs, embedded systems, mobile phones.</p>
+                        <p>First you write a Kernel then you devide your computation domain</p>
+                        <p>and OpenCL executes your kernel for each element it.</p>
+                        <div id="logo" style="">
+                            <img  src="css/imgs/kernel.png">
+                        </div>
                         
                     </section>
 					<section>
 						<h2>Parallel Computing for the Web</h2>
                         <div id="logo" style="">
-                            <img width="250" height="115" src="css/imgs/WebCL_logo1.png">
+                            <img  src="css/imgs/WebCL_logo1.png">
                         </div>
 
                         <ul>
-                            <li>JavaScript binding to OpenCL</li>
-                            <li>Improve browsers performance</li>
-                            <li>Prototypes by Samsung, Nokia and Motorola </li>
+                            <li>Now only JavaScript binding to OpenCL
+                                <ul> Improves browsers performances.</ul> 
+                            </li>
+                            <li>In future more integration with HTML
+                                <ul> direct access to elements images and video.</ul> 
+                            </li>
                         </ul>
-                        <div id="logo" style="">
-                            <img  width="674.0" height="200" src="css/imgs/kernel.png">
-                        </div>
+
 					</section>
 				</section>
 
@@ -563,7 +554,7 @@
 					<section>
 						<h2>3D graphics on the Web</h2>
                        <div id="logo" style="">
-                            <img width="250" height="115" src="css/imgs/WebGL_logo1.png">
+                            <img  height="115"  src="css/imgs/WebGL_logo1.png">
                         </div>
 
                         <ul>
@@ -597,35 +588,42 @@
                             </ul>
                         </li>
                         <li>Recoursive iterations.</li>
-                        <li>Calculation of three type of points.
-                            <ul>
-                                <li>Face Points, Edge Points and Vertex Points.</li>
-                            </ul>    
-                        </li>
                     </ul>
-                   
                     <div id="logo" style="">
-                        <img width="250" height="250"src="css/imgs/fase02D.png">
+                        <img  src="css/imgs/rafinement.png">
+                    </div>
+                    
+                    </section>
+                    
+                    <section>
+                        <h2>Study case : Catmull-Clark</h2>
+                        <p>Calculation of three type of points.</p>
+                        <p>Face Points , Edge Points and Vertex Points</p>
+                        <p>Initial coarse mesh</p>
+                        <p>&nbsp</p>
+                    </ul>
+                    <div id="logo" style="">
+                        <img src="css/imgs/fase02D.png">
                     </div>
                     </section>
                     <section>
                         <h2>Face Points </h2>
-                         <img  width="300" height="300" src="css/imgs/fase12D.png">
+                         <img  src="css/imgs/fase12D.png">
                          <p> For each face of the control mesh, generate a new face point - which is positioned at the centroid of the vertices corresponding to a face.</p>
                     </section>
                     <section>
                         <h2>Edge Points </h2>
-                         <img   width="300" height="300" src="css/imgs/fase22D.png">
+                         <img src="css/imgs/fase22D.png">
                          <p> Generate a new edge point for every edge as the centroid of four vertices: the two vertices that connect to make up the edge, and the face points for the two adjoining faces.</p>
                     </section>
                     <section>
                         <h2>Vertex Points </h2>
-                         <img  width="300" height="300" src="css/imgs/fase32D.png">
+                         <img src="css/imgs/fase32D.png">
                          <p> For each original vertex, move it in relation of the FacePoints of the  adjoining faces and in relation of the neighboring vertices.</p>
                     </section>
                     <section>
                         <h2>Putting it all together </h2>
-                        <img  width="300" height="300" src="css/imgs/fase42D.png">
+                        <img src="css/imgs/fase42D.png">
                         <ul>
                         <li>Each new face point is connected to the new edge points 
                             <ul>
@@ -640,6 +638,27 @@
                         </ul>
                     </section>
 				</section>
+                <section>
+                    <section>
+                        <h2>Serial Implementation </h2>
+                        <ul>
+                            <li> One code to do the all subdivision.</li>
+                            <li> Input from file.</li>
+                        </ul>
+                        <div id="logo" style="">
+                            <img src="css/imgs/SerialProcedureWebGl.png">
+                        </div>
+                     </section>
+                     <section>
+                        <h2>Parallel implementation</h2>
+                        <p>Modifying the serial we have the new WebCL implementation</p>
+
+                        <p>Three different parallel kernels</p><div id="logo" style="">
+                        <p>&nbsp</p>
+                            <img src="css/imgs/ParallelProcedureWebGl.png">
+                        </div>
+                     </section>
+                </section>       
 				<section>
 					<section>
 						<h2>Graphical results</h2>
@@ -656,8 +675,9 @@
                             <ul>
                                 <li>- Intel Core 2 Duo 2,53 GHz</li>
                                 <li>- 8 GB DDR3 1066 MHz</li>
-                                <li>- NVIDIA GeForce 9400M 256MB</li>
+                                <li>- NVIDIA GeForce 9400M 256MB 16 cores</li>
                                 <li>- Samsung’s webcl-20111212</li>
+                                <li>- WebKit r101596 </li>
                             </ul>    
                             </li>
                         </ul>
@@ -670,7 +690,7 @@
 						<div id="visualization" style="width: 600px; height: 400px;text-align: center;"></div>
 
 					</section>
-					<section data-state="soothe">
+					<section>
 						<h2>Parallel Results</h2>
 						<p>For a reasonable input, more than 10000 faces, the face-rate attemnts on 250.000 faces per second. Three times more.
 						</p>
@@ -681,10 +701,12 @@
 					<section>
 						<h2>Future developments</h2>
 						<h1>&nbsp</h1><h1>&nbsp</h1>
-						<ol>
-							<li>Improvements to the program </li>
-							<li>New areas of development </li>
-						</ol>
+                        <div id="dev" style=""> 
+                            <h3>1: Improvements to the program </h3>
+                            <h3>2: New areas of development </h3>
+                        </div>
+
+
 					</section>
 					<section>
 						<h2>Catmull-Clark side</h2>
@@ -692,7 +714,6 @@
 						<ul>
 							<li>Improve the performance of the algorithms</li>
 							<li>Test them on different platforms</li>
-
 							<li>Porting the serial code to Plasm.js</li>
 						</ul>
 					</section>
@@ -722,23 +743,17 @@
 				<section>
 					<h2>Credits</h2>
 					<h1>&nbsp</h1>
-
-					<p> All the code can be found at:  https://github.com/fean9r .</p>
+                    
+					<p> The code can be found at:  https://github.com/fean9r .</p>
 					<p> Thanks to: https://developers.google.com/chart/ for the charts.</p>
 					<p> For the CSS slides thanks to  : reveal.js </p>
-                    <h1>&nbsp</h1>
+                    <h4>&nbsp</h4>
+                    <div id="credits" style=""> 
                     <h3>Thanks to:</h3>
+                         </div>
                     <img src="css/imgs/you.png">
                     
 
-				</section>
-
-
-				<section data-state="blackout">
-					<h1>&nbsp</h1>
-					<h1>&nbsp</h1>
-					<h1>&nbsp</h1>
-					<blockquote>fin</blockquote>
 				</section>
 			</div>
 
