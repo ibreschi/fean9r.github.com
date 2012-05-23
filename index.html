@@ -56,7 +56,7 @@
 
         // Create and draw the visualization.
         new google.visualization.LineChart(document.getElementById('visualization')).
-            draw(dataSerial, {curveType: "function",
+            draw(dataSerial, {curveType: "none",
                         width: 600, height: 400,
                         vAxis: {maxValue: 400,title: "Face-Rate/ms"},
                         hAxis: {title: "Iterations"}	
@@ -64,7 +64,7 @@
                 );
 
         new google.visualization.LineChart(document.getElementById('visualization2')).
-            draw(dataParal, {curveType: "function",
+            draw(dataParal, {curveType: "none",
                         width: 600, height: 400,
                         vAxis: {maxValue: 400,title: "Face-Rate/ms"},
                         hAxis: {title: "Iterations"}	
@@ -523,10 +523,10 @@
                         <div id="logo" style="">
                             <img  src="css/imgs/opencl.png">
                         </div>
-                        <p>Framework for  Heterogeneous Parallel Computing on </p>
-                        <p>GPUs, CPUs, DSPs, embedded systems, mobile phones.</p>
-                        <p>First you write a Kernel then you devide your computation domain</p>
-                        <p>and OpenCL executes your kernel for each element it.</p>
+                        <p>Framework for  heterogeneous parallel cmputing on </p>
+                        <p>GPUs, CPUs, DSPs, embedded systems, mobile phones</p>
+                        <p>First you decide a computation domain then write a kernel</p>
+                        <p>and OpenCL executes this kernel for each element it</p>
                         <div id="logo" style="">
                             <img  src="css/imgs/kernel.png">
                         </div>
@@ -540,10 +540,10 @@
 
                         <ul>
                             <li>Now only JavaScript binding to OpenCL
-                                <ul> Improves browsers performances.</ul> 
+                                <ul> Improves browsers performances</ul> 
                             </li>
-                            <li>In future more integration with HTML
-                                <ul> direct access to elements images and video.</ul> 
+                            <li>In future new functionalities 
+                                <ul> Direct access to elements images and video</ul> 
                             </li>
                         </ul>
 
@@ -564,7 +564,7 @@
                                 </ul>    
                             </li>
                             <li>Uses the html5 element &lt;canvas&gt;</li> 
-                            <li>No plug-in</li>
+                            <li>No plug-in is needed</li>
                             <li>Defined by the major browsers and GPU vendors together</li>
                         </ul>
 					</section>
@@ -587,9 +587,10 @@
                                 <li>From the firsts control points you obtain new ones</li>
                             </ul>
                         </li>
-                        <li>Recoursive iterations.</li>
+                        <li>Recoursive iterations</li>
+                        <li>Less data stored</li>
                     </ul>
-                     <p>&nbsp</p>
+
                     <div id="logo" style="">
                         <img  src="css/imgs/bigguyiteration.png">
                     </div>
@@ -598,8 +599,8 @@
                     
                     <section>
                         <h2>Study case : Catmull-Clark</h2>
-                        <p>Calculation of three type of points.</p>
-                        <p>Face Points , Edge Points and Vertex Points</p>
+                        <p>Calculation of three type of points</p>
+                        <p>Face Points, Edge Points and Vertex Points</p>
                         <p>Initial coarse mesh</p>
                         <p>&nbsp</p>
                     </ul>
@@ -615,7 +616,7 @@
                     <section>
                         <h2>Edge Points </h2>
                          <img src="css/imgs/fase22D.png">
-                         <p> Generate a new edge point for every edge as the centroid of four vertices: the two vertices that connect to make up the edge, and the face points for the two adjoining faces.</p>
+                         <p> Generate a new point for every edge as the centroid of four vertices: the two vertices that connect to make up the edge, and the face points for the two adjoining faces.</p>
                     </section>
                     <section>
                         <h2>Vertex Points </h2>
@@ -628,7 +629,7 @@
                         <ul>
                         <li>Each new face point is connected to the new edge points 
                             <ul>
-                                <li>edges defining the original face.</li>
+                                <li>edges defining the original face</li>
                             </ul>   
                         </li>
                         <li>Each new vertex point is connected to the new edge points
@@ -643,8 +644,8 @@
                     <section>
                         <h2>Serial Implementation </h2>
                         <ul>
-                            <li> One code to do the all subdivision.</li>
-                            <li> Input from file.</li>
+                            <li> One code to do the all subdivision</li>
+                            <li> Input from file</li>
                         </ul>
                         <div id="logo" style="">
                             <img src="css/imgs/SerialProcedureWebGl.png">
@@ -672,7 +673,7 @@
                         <h2>Preconditions</h2>
                             <h1>&nbsp</h1>
                         <ul>
-                            <li>Macbook Pro 5.1 late 2008.
+                            <li>Macbook Pro 5.1 late 2008
                             <ul>
                                 <li>- Intel Core 2 Duo 2,53 GHz</li>
                                 <li>- 8 GB DDR3 1066 MHz</li>
@@ -700,55 +701,24 @@
 					</section>
 				</section>
 				<section>
-					<section>
 						<h2>Future developments</h2>
-						<h1>&nbsp</h1><h1>&nbsp</h1>
-                        <div id="dev" style=""> 
-                            <h3>1: Improvements to the program </h3>
-                            <h3>2: New areas of development </h3>
-                        </div>
-
-
-					</section>
-					<section>
-						<h2>Catmull-Clark side</h2>
-                        <h1>&nbsp</h1>
-						<ul>
-							<li>Improve the performance of the algorithms</li>
-							<li>Test them on different platforms</li>
-							<li>Porting the serial code to Plasm.js</li>
-						</ul>
-					</section>
-					<section>
-						<h2>WebCL side</h2>
-                        <h1>&nbsp</h1>
-                        
+						<h1>&nbsp</h1>
                         <ul>
-                            <li>Find the best WebCL prototype
-                                <ul>
-                                    <li>- The new Motorola works with Node.js</li>
-                                </ul>    
-                            </li>
-                            <li>New areas where to apply WebCL
-                                <ul>
-                                    <li>- Particle collision</li>
-                                    <li>- 2D and 3D Fluid dynamics</li>
-                                    <li>- Game physics</li>
-                                    <li>- Augmented reality</li>
-                                    <li>- and much more ...</li>
-                                </ul> 
-                            </li> 
+                            <li>Improve the performance of the algorithms</li>
+                            <li>Test them on different platforms</li>
+                            <li>Porting the serial code to Plasm.js</li>
                         </ul>
-					</section>
+
+
 				</section>
 				
 				<section>
 					<h2>Credits</h2>
 					<h1>&nbsp</h1>
                     
-					<p> The code can be found at:  https://github.com/fean9r .</p>
+					<p> The code can be found at:  https://github.com/fean9r</p>
 					<p> Thanks to: https://developers.google.com/chart/ for the charts.</p>
-					<p> For the CSS slides thanks to  : reveal.js </p>
+					<p> For the CSS slides thanks to: reveal.js </p>
                     <h4>&nbsp</h4>
                     <div id="credits" style=""> 
                     <h3>Thanks to:</h3>
